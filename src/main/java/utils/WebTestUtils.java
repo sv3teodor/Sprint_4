@@ -11,16 +11,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class WebTestUtils {
-    public static void scrollTo (WebDriver driver, By component) {
+    public static void scrollTo(WebDriver driver, By component) {
         WebElement element = driver.findElement(component);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static void waitElement(WebDriver webDriver,By element){
+    public static void waitElement(WebDriver webDriver, By element) {
         new WebDriverWait(webDriver, 10).until(driver -> (driver.findElement(element).isDisplayed()));
     }
+
     //Получаем строку с датой которая смещена от текущей на заданное количество дней
-    public static String getDateForTest(int offsetDays){
+    public static String getDateForTest(int offsetDays) {
         String ResDate;
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
@@ -32,8 +33,9 @@ public class WebTestUtils {
         ResDate = formatter.format(before);
         return ResDate;
     }
+
     //Подставляет параметр в xpath путь
-     public static By xPathFormater(By xPatch, String tag) {
-         return By.xpath(String.format(xPatch.toString().replaceFirst("By.xpath: ",""),tag));
+    public static By xPathFormater(By xPatch, String tag) {
+        return By.xpath(String.format(xPatch.toString().replaceFirst("By.xpath: ", ""), tag));
     }
 }

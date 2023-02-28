@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebTestUtils;
 
-public class NewRentParamPage extends CommonHeaderClass {
+public class NewRentParamPage extends CommonHeader {
     //Локатор заголовка страницы
     private final By pageHeader = By.xpath(".//div[@class='Order_Header__BZXOb']");
     //Локатор для поля для ввода времени доставки
@@ -38,11 +38,13 @@ public class NewRentParamPage extends CommonHeaderClass {
     public boolean isPageHeader() {
         return driver.findElement(pageHeader).isDisplayed();
     }
+
     //Клик по полю даты доставки самоката
     public NewRentParamPage inputDeliveryTimeClick() {
         driver.findElement(inputDeliveryTime).click();
         return this;
     }
+
     //Ввод даты в поле дата доставки
     public NewRentParamPage inputDeliveryTime(String deliveryTime) {
         driver.findElement(inputDeliveryTime).sendKeys(deliveryTime);
@@ -50,17 +52,19 @@ public class NewRentParamPage extends CommonHeaderClass {
         driver.findElement(pageHeader).click();
         return this;
     }
+
     //Клик по полю выбора периода аренды
     public NewRentParamPage inputRentalPeriod(String rentalPeriod) {
         driver.findElement(inputRentalPeriod).click();
-        By targetElement=WebTestUtils.xPathFormater(inputRentalPeriodMenu,rentalPeriod);
-        WebTestUtils.waitElement(driver,targetElement);
+        By targetElement = WebTestUtils.xPathFormater(inputRentalPeriodMenu, rentalPeriod);
+        WebTestUtils.waitElement(driver, targetElement);
         driver.findElement(targetElement).click();
         return this;
     }
+
     //Выбрать цвет "черный"
     public NewRentParamPage selectColor(String color) {
-        driver.findElement(WebTestUtils.xPathFormater(inputScooterColor,color)).click();
+        driver.findElement(WebTestUtils.xPathFormater(inputScooterColor, color)).click();
         return this;
     }
 
@@ -69,11 +73,13 @@ public class NewRentParamPage extends CommonHeaderClass {
         driver.findElement(inputComment).sendKeys(comment);
         return this;
     }
+
     //Клик по кнопке "Назад"
     public NewRentParamPage btnBackClick() {
         driver.findElement(btnBack).click();
         return this;
     }
+
     //Клик по кнопке "Заказать"
     public NewRentConfirmPage btnCreateOrderClick() {
         driver.findElement(btnCreateOrder).click();
@@ -81,14 +87,11 @@ public class NewRentParamPage extends CommonHeaderClass {
     }
 
     //Метод заполняющий все поля формы про аренду
-    public NewRentConfirmPage addRentInfo (String timeDelivery, String rentPeriod, String scooterColor, String comment) {
+    public NewRentConfirmPage addRentInfo(String timeDelivery, String rentPeriod, String scooterColor, String comment) {
         inputDeliveryTime(timeDelivery);
         inputRentalPeriod(rentPeriod);
         selectColor(scooterColor);
         inputComment(comment);
         return btnCreateOrderClick();
     }
-
-
-
 }

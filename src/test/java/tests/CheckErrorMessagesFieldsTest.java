@@ -1,24 +1,24 @@
 package tests;
 
-import config.TestConfig;
+import config.TestData;
 import org.junit.Assert;
 import org.junit.Test;
 import pages.HomePage;
 import pages.NewRentClientInfoPage;
-import utils.BaseTestClass;
+import utils.BaseTest;
 
 //Тест неверного заполнения полей форм заказа.
 //При вводе неверной станции метро браузер улетает на пустую страницу, это баг
-public class CheckErrorMessagesFieldsTest extends BaseTestClass {
+public class CheckErrorMessagesFieldsTest extends BaseTest {
     @Test
-    public void testErrorInFields(){
+    public void testErrorInFields() {
         //Заполняем поля неверными значениями
         NewRentClientInfoPage clientInfoPage = new HomePage(driver)
                 .btnRentScooterButtonClick()
-                .inputName(TestConfig.INCORRECT_NAME)
-                .inputSurname(TestConfig.INCORRECT_SURNAME)
-                .inputAddress(TestConfig.INCORRECT_ADDRESS)
-                .inputPhoneNumber(TestConfig.INCORRECT_PHONENUMBER)
+                .inputName(TestData.INCORRECT_NAME)
+                .inputSurname(TestData.INCORRECT_SURNAME)
+                .inputAddress(TestData.INCORRECT_ADDRESS)
+                .inputPhoneNumber(TestData.INCORRECT_PHONE_NUMBER)
                 .inputSubwayStationClick("aaaa")
                 .inputSubwayStationClick("aaaa");
         //Проверяем, что все ошибки видны

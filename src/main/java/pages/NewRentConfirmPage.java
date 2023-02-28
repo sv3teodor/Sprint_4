@@ -2,9 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.BasePageClass;
 
-public class NewRentConfirmPage extends BasePageClass {
+public class NewRentConfirmPage extends BasePage {
     //Заголовок формы
     private final By pageHeader = By.className("Order_ModalHeader__3FDaJ");
     //Кнопка Нет
@@ -31,4 +30,4 @@ public class NewRentConfirmPage extends BasePageClass {
         driver.findElement(btnYes).click();
         return new NewRentConfirmedPage(driver);
     }
- }
+}

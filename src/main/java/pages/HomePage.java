@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebTestUtils;
 
-public class HomePage extends CommonHeaderClass {
+public class HomePage extends CommonHeader {
     //Сообщение с запросом разрешения на хранение куков
     private final By messageCooke = By.className("App_CookieText__1sbqp");
     //Кнопка запроса на хранение куков
@@ -34,15 +34,17 @@ public class HomePage extends CommonHeaderClass {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
     //Проверка на окно с запросом разрешение на хранение куков
     public boolean isCookieRequest() {
         return driver.findElement(messageCooke).isDisplayed();
     }
 
-    public HomePage btnCookeClick(){
+    public HomePage btnCookeClick() {
         driver.findElement(btnCooke).click();
         return this;
     }
+
     //Клик по кнопке "заказать" в верху страницы
     public NewRentClientInfoPage btnRentScooterTopClick() {
         WebTestUtils.scrollTo(driver, btnRentScooterTop);
@@ -56,6 +58,7 @@ public class HomePage extends CommonHeaderClass {
         driver.findElement(btnRentScooterButton).click();
         return new NewRentClientInfoPage(driver);
     }
+
     //Клик по "Статус заказа"
     public HomePage btnSwitchToCheckRentStatusClick() {
         driver.findElement(btnSwitchToCheckRentStatus).click();
@@ -70,7 +73,7 @@ public class HomePage extends CommonHeaderClass {
 
     // Клик по кнопе GO для проверки статуса заказа
     public CheckRentStatusPage btnCheckRentStatus() {
-        WebTestUtils.waitElement(driver,btnCheckRentStatus);
+        WebTestUtils.waitElement(driver, btnCheckRentStatus);
         driver.findElement(btnCheckRentStatus).click();
         return new CheckRentStatusPage(driver);
     }
@@ -80,13 +83,13 @@ public class HomePage extends CommonHeaderClass {
     // но возможно так быстрее т.у. не надо каждый раз перебирать всю мапу. Но это не точно)
     public HomePage faqQuestionAnswerCheck(String questionText, String answerText) {
         //Подставляем вопрос
-        By questionLocator=WebTestUtils.xPathFormater(faqQuestion,questionText);
-        WebTestUtils.scrollTo(driver,questionLocator);
+        By questionLocator = WebTestUtils.xPathFormater(faqQuestion, questionText);
+        WebTestUtils.scrollTo(driver, questionLocator);
         driver.findElement(questionLocator).click();
 
         //Формируем искомого локатор ответа
-        By answerLocator=WebTestUtils.xPathFormater(faqAnswer,answerText);
-        WebTestUtils.scrollTo(driver,answerLocator);
+        By answerLocator = WebTestUtils.xPathFormater(faqAnswer, answerText);
+        WebTestUtils.scrollTo(driver, answerLocator);
         driver.findElement(answerLocator);
         return this;
     }

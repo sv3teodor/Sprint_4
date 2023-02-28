@@ -2,9 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.BasePageClass;
 
-public class NewRentConfirmedPage extends BasePageClass {
+public class NewRentConfirmedPage extends BasePage {
 
     //Заголовок окна подтверждения заказа
     private final By pageHeader = By.xpath(".//div[text()='Заказ оформлен']");
@@ -14,13 +13,14 @@ public class NewRentConfirmedPage extends BasePageClass {
     public NewRentConfirmedPage(WebDriver driver) {
         super(driver);
     }
+
     //Проверка, что окно "Заказ оформлен" появилось
     public boolean isPageRentConfirmed() {
         return driver.findElement(pageHeader).isDisplayed();
     }
 
     //Нажать кнопку "Просмотр заказа"
-    public BasePageClass btnShowStatusClick() {
+    public BasePage btnShowStatusClick() {
         driver.findElement(btnShowStatus).click();
         return null;
     }
